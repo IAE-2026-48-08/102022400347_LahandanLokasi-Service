@@ -24,6 +24,8 @@ services:
       - APP_DEBUG=true
     depends_on:
       - db
+    extra_hosts:
+      - "iae-sso.virtualfri.id:103.41.206.192"
     networks:
       - dpark-network
 
