@@ -38,6 +38,7 @@ return [
     'iae_sso' => [
         'url' => env('IAE_SSO_URL', 'https://iae-sso.virtualfri.id'),
         'api_key' => env('IAE_API_KEY', 'KEY-MHS-424'),
+        'nim' => env('IAE_NIM', '102022400347'),
         'team_id' => env('IAE_TEAM_ID', 'TEAM-06'),
         'amqp_host' => env('IAE_AMQP_HOST', 'iae-sso.virtualfri.id'),
         'amqp_port' => env('IAE_AMQP_PORT', 5672),

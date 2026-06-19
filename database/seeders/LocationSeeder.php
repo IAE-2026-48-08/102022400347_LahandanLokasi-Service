@@ -13,7 +13,7 @@ class LocationSeeder extends Seeder
     public function run(): void
     {
         \App\Models\Location::create([
-            'name' => 'ParkSmart Dago',
+            'name' => 'DPARK Dago',
             'address' => 'Jl. Ir. H. Juanda No. 100 Bandung',
             'capacity_car' => 20,
             'capacity_motor' => 50,
@@ -25,7 +25,7 @@ class LocationSeeder extends Seeder
         ]);
 
         \App\Models\Location::create([
-            'name' => 'ParkSmart BIP',
+            'name' => 'DPARK BIP',
             'address' => 'Jl. Merdeka No. 56 Bandung',
             'capacity_car' => 50,
             'capacity_motor' => 100,
@@ -37,7 +37,7 @@ class LocationSeeder extends Seeder
         ]);
 
         \App\Models\Location::create([
-            'name' => 'ParkSmart Braga',
+            'name' => 'DPARK Braga',
             'address' => 'Jl. Braga No. 5 Bandung',
             'capacity_car' => 40,
             'capacity_motor' => 80,

@@ -28,7 +28,7 @@ class LocationController extends Controller
                     items: new OA\Items(
                         properties: [
                             new OA\Property(property: 'id', type: 'integer', example: 1),
-                            new OA\Property(property: 'name', type: 'string', example: 'ParkSmart Braga'),
+                            new OA\Property(property: 'name', type: 'string', example: 'DPARK Braga'),
                             new OA\Property(property: 'address', type: 'string', example: 'Jl. Braga No. 5 Bandung'),
                             new OA\Property(property: 'capacity_car', type: 'integer', example: 40),
                             new OA\Property(property: 'capacity_motor', type: 'integer', example: 80),
@@ -74,7 +74,7 @@ class LocationController extends Controller
                 content: new OA\JsonContent(
                     properties: [
                         new OA\Property(property: 'id', type: 'integer', example: 1),
-                        new OA\Property(property: 'name', type: 'string', example: 'ParkSmart Braga'),
+                        new OA\Property(property: 'name', type: 'string', example: 'DPARK Braga'),
                         new OA\Property(property: 'address', type: 'string', example: 'Jl. Braga No. 5 Bandung'),
                         new OA\Property(property: 'capacity_car', type: 'integer', example: 40),
                         new OA\Property(property: 'capacity_motor', type: 'integer', example: 80),
@@ -127,7 +127,7 @@ class LocationController extends Controller
             content: new OA\JsonContent(
                 required: ['name', 'address', 'capacity_car', 'capacity_motor', 'tariff_car', 'tariff_motor', 'operating_hours'],
                 properties: [
-                    new OA\Property(property: 'name', type: 'string', example: 'ParkSmart Pasteur'),
+                    new OA\Property(property: 'name', type: 'string', example: 'DPARK Pasteur'),
                     new OA\Property(property: 'address', type: 'string', example: 'Jl. Pasteur No. 12 Bandung'),
                     new OA\Property(property: 'capacity_car', type: 'integer', example: 30),
                     new OA\Property(property: 'capacity_motor', type: 'integer', example: 60),

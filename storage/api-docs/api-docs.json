@@ -38,7 +38,7 @@
                                             },
                                             "name": {
                                                 "type": "string",
-                                                "example": "ParkSmart Braga"
+                                                "example": "DPARK Braga"
                                             },
                                             "address": {
                                                 "type": "string",
@@ -112,7 +112,7 @@
                                 "properties": {
                                     "name": {
                                         "type": "string",
-                                        "example": "ParkSmart Pasteur"
+                                        "example": "DPARK Pasteur"
                                     },
                                     "address": {
                                         "type": "string",
@@ -248,7 +248,7 @@
                                         },
                                         "name": {
                                             "type": "string",
-                                            "example": "ParkSmart Braga"
+                                            "example": "DPARK Braga"
                                         },
                                         "address": {
                                             "type": "string",
@@ -317,6 +317,100 @@
                         }
                     }
                 }
+            }
+        },
+        "/api/v1/locations/{id}/check-in": {
+            "post": {
+                "tags": [
+                    "Locations"
+                ],
+                "summary": "Check-in a vehicle at a parking location (SSO Protected)",
+                "description": "Check-in a vehicle at a parking location.\n\nThis is a CRITICAL STATE-CHANGING transaction that:\n1. Validates JWT from Federated SSO (Cloud Dosen)\n2. Increments occupied vehicle count (state change)\n3. Sends audit log to Legacy SOAP/XML service and stores ReceiptNumber\n4. Publishes event notification to RabbitMQ via AMQP",
+                "operationId": "39ae541a31a020a8a619e2bd881d055d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Location ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "vehicle_type",
+                                    "license_plate"
+                                ],
+                                "properties": {
+                                    "vehicle_type": {
+                                        "type": "string",
+                                        "example": "car",
+                                        "enum": [
+                                            "car",
+                                            "motor"
+                                        ]
+                                    },
+                                    "license_plate": {
+                                        "type": "string",
+                                        "example": "D 1234 AB"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Vehicle checked in successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Vehicle checked in successfully"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "audit": {
+                                            "type": "object"
+                                        },
+                                        "amqp": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation or capacity error"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Location not found"
+                    }
+                },
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ]
             }
         }
     },
